@@ -43,7 +43,7 @@
 .box {
   width: 200px;
   height: 100px;
-  background-color: #3498db;
+  background-color: #007497;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin-top: 0px; /* Sesuaikan dengan kebutuhan */
@@ -106,7 +106,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: #a64bf4;
+  color: #007497;
 }
 
 /*---------------------------------------------*/
@@ -367,11 +367,11 @@ iframe {
 }
 
 .input100:focus + .focus-input100::after {
-  color: #a64bf4;
+  color: #007497;
 }
 
 .has-val.input100 + .focus-input100::after {
-  color: #a64bf4;
+  color: #007497;
 }
 
 
@@ -408,11 +408,11 @@ iframe {
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: #a64bf4;
-  background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: #007497;
+  background: -webkit-linear-gradient(right, #007497, #9DBFDB, #007497, #9DBFDB);
+  background: -o-linear-gradient(right, #007497, #9DBFDB, #007497, #9DBFDB);
+  background: -moz-linear-gradient(right, #007497, #9DBFDB, #007497, #9DBFDB);
+  background: linear-gradient(right, #007497, #9DBFDB, #007497, #9DBFDB);
   top: 0;
   left: -100%;
 
