@@ -1,25 +1,49 @@
-name: cicd
+name: Laravel CI
 
 on:
   push:
-    branches: [ "frontend" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "frontend" ]
+    branches: [ "main" ]
 
 jobs:
-  frontend-tests:
-
-    runs-on: windows-latest
+  laravel-tests:
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
       with:
-        node-version: '18'
-    - name: Install Dependencies
-      run: npm install
-    - name: Run Build
-      run: npm run build
-    - name: Run Tests
-      run: npm test
+        php-version: '7.4'
+
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Copy .env
+      run: cp .env.example .env
+
+    - name: Install Composer dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
+
+    - name: Generate application key
+      run: php artisan key:generate
+
+    - name: Set directory permissions
+      run: chmod -R 777 storage bootstrap/cache
+
+    - name: Create SQLite database
+      run: |
+        mkdir -p database
+        touch database/database.sqlite
+
+    - name: Set up environment variables
+      run: echo "DB_CONNECTION=sqlite" >> .env
+
+    - name: Run migrations
+      run: php artisan migrate --force
+
+    - name: Check migration status
+      run: php artisan migrate:status
+
+    - name: Run tests
+      run: php artisan test
